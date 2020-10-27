@@ -4,6 +4,7 @@ import ImageDetailPage from './pages/imageDetailPage';
 import ImageListPage from './pages/imageListPage';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 function App() {
 	const [data, setData] = useState([])
 

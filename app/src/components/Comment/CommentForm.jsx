@@ -27,10 +27,10 @@ export default function CommentForm(props) {
 					className='form-control'
 					value={messageInputData}
 					onChange={e => setMessageInputData(e.target.value)}
-					placeholder='Enter comment'
+					placeholder='Add a comment'
 				/>
 			</div>
-			<Button>Send</Button>
+			<Button>Publish</Button>
 		</form>
 	);
 }

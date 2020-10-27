@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import CommentList from './Comment/CommentList';
+import CommentList from '../Comment/CommentList';
+ 
+import {
+	ContainerHeader,
+	ImageFooter,
+	Testdiv
+} from './ImageItemStyles';
 
 export default function ImageItem(props) {
 	const [selected, setSelected] = useState(false);
@@ -35,10 +41,10 @@ export default function ImageItem(props) {
 	return (
 		<div className='col-md-8'>
 			<div className='card' style={{ width: '34rem' }}>
-				<div className='card-header'>
+			<ContainerHeader isTrue={true}>
 					<img src={props.profilePicture} alt='' />
 					<p>{props.firstName}</p>
-				</div>
+			</ContainerHeader>
 
 				<img
 					className='card-img-top'
@@ -47,11 +53,11 @@ export default function ImageItem(props) {
 					alt=''
 				/>
 
-				<button onClick={handleOnClick}>
-					<img className='heart' src='../heart-outline.svg' alt='' /> Likes(
-					{likes}){selected && '❤️'}{' '}
-				</button>
-
+				<ImageFooter>
+				<button className='likeButton' onClick={handleOnClick}></button>
+					<p>
+					{likes} Likes {selected && '❤️'}{' '}</p>
+				</ImageFooter>
 				<div className='card-body'>
 					<h5 className='card-title'>{props.image.text} </h5>
 					<h6 className='card-text'>{text}</h6>

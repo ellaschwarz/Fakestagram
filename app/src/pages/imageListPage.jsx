@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import ImageItem from '../components/ImageItem';
+import ImageItem from '../components/Image/ImageItem';
 import Header from '../components/header/header';
-import axios from 'axios';
 
 export default function ImageList() {
 	const [data, setData] = useState([]);
 	const [expandedItem, setExpandedItem] = useState(null);
 	const [user, setUser] = useState([]);
-	const [loading, setLoading] = useState(false);
 
 	function handleFetchImages() {
 		fetch('https://image-mock-data.firebaseio.com/images.json')
@@ -19,7 +17,6 @@ export default function ImageList() {
 	}
 
 	const fetchUserData = () => {
-		const APP_ID = '{5f98014a886ad32970b31662}';
 		const BASE_URL = 'https://5da81b8f23fa740014697d60.mockapi.io';
 		fetch(`${BASE_URL}/Todo`)
 			.then(res => res.json())
@@ -28,18 +25,6 @@ export default function ImageList() {
 				console.log(result);
 			});
 	};
-
-	//  setLoading(true);
-	//   axios.get(`${BASE_URL}/user`, { headers: { 'app-id': APP_ID } })
-	//       .then(({ user }) => setUser(user))
-	//       .then(console.log(user))
-	//       .catch(console.error)
-	//      .finally(() => setLoading(false));
-
-	// let userData = {
-	//   firstname: user.firstName,
-	//   picture: user.picture
-	//   }
 
 	useEffect(() => {
 		handleFetchImages();
@@ -53,7 +38,6 @@ export default function ImageList() {
 			<div className='container'>
 				<div className='row'>
 					<div className='col-md-8 offset-md-2'>
-						{loading && 'Loading...'}
 						{user &&
 							data.map((image, index) => {
 								return (
